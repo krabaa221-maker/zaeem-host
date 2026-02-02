@@ -1,0 +1,12 @@
+// PSFree lapse module for PS4 9.00
+export const lapse = async (ms) => {
+    return new Promise((resolve) => {
+        setTimeout(resolve, ms);
+    });
+};
+
+export const tick = async () => {
+    return new Promise((resolve) => {
+        requestAnimationFrame(resolve);
+    });
+};
