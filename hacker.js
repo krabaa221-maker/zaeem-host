@@ -1,14 +1,17 @@
-function run_hacker() {
-    document.getElementById('status').innerText = "جاري إرسال ملف GoldHen... انتظر ثواني"; //
+async function run_hacker() {
+    document.getElementById('status').innerText = "جاري تفعيل ثغرة الزعيم (بدون فلاشة)... يرجى الانتظار";
     
-    // هاد الكود بيبحث عن ملف الـ bin وبيرسله للذاكرة
-    fetch("goldhen.bin").then(response => {
-        return response.arrayBuffer();
-    }).then(data => {
-        // هنا تبدأ عملية تشغيل الثغرة الحقيقية
-        window.postMessage("trigger-exploit", "*"); 
-        document.getElementById('status').innerText = "تم إرسال GoldHen بنجاح! انتظر إشعار السوني"; //
-    }).catch(e => {
-        document.getElementById('status').innerText = "خطأ: تأكد من وجود ملف goldhen.bin في المستودع"; //
-    });
+    try {
+        // استدعاء ملف الـ psfree.mjs اللي تعبت عليه
+        const mod = await import('./psfree.mjs');
+        
+        // تشغيل الثغرة
+        await mod.run();
+        
+        // إذا نجحت، يرسل ملف GoldHen
+        window.postMessage("trigger-exploit", "*");
+    } catch (e) {
+        // إذا في مشكلة بالملف الكبير بيطلعلك هون
+        document.getElementById('status').innerText = "خطأ في تشغيل المحرك: " + e.message;
+    }
 }
