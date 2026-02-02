@@ -859,4 +859,12 @@ async function main() {
     // path to your script that will use the exploit
     import('./lapse.mjs');
 }
-main();
+main();then(load_goldhen_after_psfree);
+// كود شركة الزعيم لربط المحرك بملف الجولد هين
+async function load_goldhen_after_psfree() {
+    const response = await fetch('goldhen.bin');
+    const data = await response.arrayBuffer();
+    // إرسال الملف لنظام السوني
+    window.postMessage({ type: 'pld', data: data }, '*');
+    alert("تم تفعيل هكر الزعيم بنجاح! انتظر الإشعار الأزرق");
+}
