@@ -1,12 +1,14 @@
-CACHE MANIFEST
-# v1.0
+CACHE MANIFEST 
+# v1.1 - هوست الزعيم
 
-CACHE:
 index.html
-hacker.js
-exploit.js
-logo.png
+psfree.js
+lapse.mjs
 goldhen.bin
+exploit.js
+hacker.js
+logo.png
 
-NETWORK:
-*
+NETWORK: 
+* ```
+
