@@ -1,47 +1,62 @@
 <!DOCTYPE html>
-<html manifest="cache.manifest" lang="ar" dir="rtl">
+<html manifest="cache.manifest">
 <head>
     <meta charset="UTF-8">
-    <title>هوست شركة الزعيم - PS4</title>
+    <title>هوست شركة الزعيم - V1.1</title>
     <style>
-        body { background-color: #f0f2f5; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; font-family: Arial, sans-serif; }
-        .header { margin-top: 20px; text-align: center; }
-        .logo { width: 180px; height: auto; }
-        h1 { color: #2c3e50; font-size: 35px; margin: 10px 0; }
-        .main-content { display: flex; justify-content: space-around; align-items: center; width: 100%; height: 250px; }
-        .side-bar { width: 12%; height: 80px; background-color: #004aad; border-radius: 30px; }
-        .start-btn { background-color: #004aad; color: white; border: none; border-radius: 20px; width: 320px; height: 110px; font-size: 45px; font-weight: bold; cursor: pointer; transition: 0.2s; }
-        .start-btn:hover { background-color: #003580; transform: scale(1.05); }
-        #status { margin-top: 20px; font-size: 20px; color: #004aad; font-weight: bold; }
-        .footer { position: fixed; bottom: 20px; background-color: #004aad; color: white; width: 65%; border-radius: 20px; padding: 15px; text-align: center; }
+        body { background-color: #1a1a1a; color: white; text-align: center; font-family: sans-serif; }
+        .container { margin-top: 50px; }
+        img { width: 200px; border-radius: 20px; }
+        #progress-container { width: 80%; background: #333; border-radius: 15px; margin: 20px auto; display: none; border: 2px solid #004aad; }
+        #progress-bar { width: 0%; height: 25px; background: #004aad; border-radius: 12px; line-height: 25px; font-weight: bold; }
+        .start-btn { padding: 15px 40px; font-size: 22px; background: #004aad; color: white; border: none; border-radius: 10px; cursor: pointer; margin-top: 20px; }
+        #status { margin-top: 15px; font-size: 18px; color: #aaa; }
     </style>
 </head>
 <body>
-
-    <div class="header">
-        <img src="logo.png" alt="لوغو الزعيم" class="logo">
+    <div class="container">
+        <img src="logo.png" alt="الزعيم">
         <h1>شركة الزعيم</h1>
-    </div>
-
-    <div class="main-content">
-        <div class="side-bar"></div>
+        
+        <div id="progress-container">
+            <div id="progress-bar">0%</div>
+        </div>
+        
+        <div id="status">انتظر تحميل الكاش...</div>
         <button class="start-btn" onclick="run_hacker()">start</button>
-        <div class="side-bar"></div>
     </div>
 
-    <div id="status">جاهز لتشغيل الهكر...</div>
+    <script>
+        // كود تحريك شريط التحميل
+        var cache = window.applicationCache;
+        cache.addEventListener('progress', function(e) {
+            var percent = Math.round((e.loaded / e.total) * 100);
+            document.getElementById('progress-container').style.display = 'block';
+            document.getElementById('progress-bar').style.width = percent + '%';
+            document.getElementById('progress-bar').innerText = percent + '%';
+            document.getElementById('status').innerText = "جاري تخزين ملفات الزعيم...";
+        });
 
-    <div class="footer">
-        <div>📞 0550777350</div>
-        <div>📍 الرياض - حي الشفاء - شارع ابن تيميه</div>
-    </div>
+        cache.addEventListener('cached', function() {
+            document.getElementById('status').innerText = "تم التحميل! افصل النت واضغط Start";
+        });
 
-   <script src="psfree.js"></script>
-<script src="exploit.js"></script>
-<script src="hacker.js"></script>
+        cache.addEventListener('noupdate', function() {
+            document.getElementById('status').innerText = "الهوست جاهز للاستخدام أوفلاين";
+        });
+
+        function run_hacker() {
+            // استدعاء الوظيفة الموجودة في hacker.js
+            if(typeof run_hacker_logic === "function") {
+                run_hacker_logic();
+            } else {
+                alert("جاري تشغيل محرك PSFree...");
+            }
+        }
+    </script>
+
+    <script src="psfree.js"></script> 
+    <script src="hacker.js"></script>
 </body>
 </html>
-
-
-
 
