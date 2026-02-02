@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <title>هوست شركة الزعيم - PS4</title>
+    <style>
+        body { background-color: #f0f2f5; margin: 0; padding: 0; display: flex; flex-direction: column; align-items: center; font-family: Arial, sans-serif; }
+        .header { margin-top: 20px; text-align: center; }
+        .logo { width: 180px; height: auto; }
+        h1 { color: #2c3e50; font-size: 35px; margin: 10px 0; }
+        .main-content { display: flex; justify-content: space-around; align-items: center; width: 100%; height: 250px; }
+        .side-bar { width: 12%; height: 80px; background-color: #004aad; border-radius: 30px; }
+        .start-btn { background-color: #004aad; color: white; border: none; border-radius: 20px; width: 320px; height: 110px; font-size: 45px; font-weight: bold; cursor: pointer; transition: 0.2s; }
+        .start-btn:hover { background-color: #003580; transform: scale(1.05); }
+        #status { margin-top: 20px; font-size: 20px; color: #004aad; font-weight: bold; }
+        .footer { position: fixed; bottom: 20px; background-color: #004aad; color: white; width: 65%; border-radius: 20px; padding: 15px; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <img src="logo.png" alt="لوغو الزعيم" class="logo">
+        <h1>شركة الزعيم</h1>
+    </div>
+
+    <div class="main-content">
+        <div class="side-bar"></div>
+        <button class="start-btn" onclick="run_hacker()">start</button>
+        <div class="side-bar"></div>
+    </div>
+
+    <div id="status">جاهز لتشغيل الهكر...</div>
+
+    <div class="footer">
+        <div>📞 0550777350</div>
+        <div>📍 الرياض - حي الشفاء - شارع ابن تيميه</div>
+    </div>
+
+    <script src="exploit.js"></script>
+    <script src="hacker.js"></script>
+</body>
+</html>
