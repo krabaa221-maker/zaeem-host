@@ -13,4 +13,5 @@ function run_hacker() {
     } catch (e) {
         document.getElementById('status').innerText = "خطأ: تأكد من وجود ملف goldhen.bin";
     }
+
 }
