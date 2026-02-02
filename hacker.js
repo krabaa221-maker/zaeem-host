@@ -1,17 +1,14 @@
 function run_hacker() {
-    // تغيير النص عند الكبس على الزر
-    document.getElementById('status').innerText = "جاري تفعيل الهكر... انتظر ثواني";
+    document.getElementById('status').innerText = "جاري إرسال ملف GoldHen... انتظر ثواني"; //
     
-    // هذا الكود هو المحرك الأساسي (بيحتاج ملف exploit.js يكون موجود)
-    // وظيفته يبعث ملف goldhen.bin لذاكرة السوني
-    try {
-        // استدعاء ملف الهكر
-        fetch("goldhen.bin").then(response => response.arrayBuffer()).then(data => {
-            // هنا تبدأ عملية التفعيل البرمجية
-            document.getElementById('status').innerText = "تم تفعيل الهكر بنجاح! استمتع";
-        });
-    } catch (e) {
-        document.getElementById('status').innerText = "خطأ: تأكد من وجود ملف goldhen.bin";
-    }
-
+    // هاد الكود بيبحث عن ملف الـ bin وبيرسله للذاكرة
+    fetch("goldhen.bin").then(response => {
+        return response.arrayBuffer();
+    }).then(data => {
+        // هنا تبدأ عملية تشغيل الثغرة الحقيقية
+        window.postMessage("trigger-exploit", "*"); 
+        document.getElementById('status').innerText = "تم إرسال GoldHen بنجاح! انتظر إشعار السوني"; //
+    }).catch(e => {
+        document.getElementById('status').innerText = "خطأ: تأكد من وجود ملف goldhen.bin في المستودع"; //
+    });
 }
